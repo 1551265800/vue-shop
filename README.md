@@ -32,4 +32,29 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - 项目的全局状态包含登陆token、订单信息采用Vuex管理，并跟踪数据变化
     - 由于商品具有编辑功能，所以引入了富文本编辑器wangEditor
     - 因为项目开发前后端同步，所以前期数据采用node+moke 做数据模拟，并且在开发环境下采用proxy解决跨域问题
-3. 
+3. 业务实现
+
+### 项目心得
+
+### 项目亮点
+
+## 项目依赖
+1. 网络请求 Axios `cnpm i axios -S`
+2. 集成ElementUI组件库 `vue add element`
+
+## 项目页面结构
+1. 商品管理：product
+2. 规格参数：params
+3. 内容分类管理：content
+4. 用户登陆注册页面：login
+5. 用户中心：user
+
+## 页面级别
+    - login
+    - layout
+        - content
+        - params
+        - product
+    - user
+
+## 初始化css样式
