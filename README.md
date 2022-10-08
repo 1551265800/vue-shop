@@ -58,3 +58,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - user
 
 ## 初始化css样式
+
+## 实现登陆页面 login.vue
+1. 用到的组件 el-card el-tabs el-form
+2. 功能 ： 登陆 注册
+
+## 实现后台服务器提供接口
+Node + MySql（XAMPP）
+1. 安装依赖 express框架
