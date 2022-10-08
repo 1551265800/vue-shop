@@ -12,22 +12,28 @@ const routes = [
   {
     path: '/',
     name: 'Layout',
+    redirect:'product',
     component: () => import('../views/layout.vue'),
-    children :[
+    meta: { requiresAuth: true },
+    children: [
       {
-        path: '',
+        path: 'product',
         name: 'Product',
-        component: () => import('../views/product')
+        component: () => import('../views/product'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'params',
         name: 'Params',
-        component: () => import('../views/params')
+        component: () => import('../views/params'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'content',
         name: 'content',
-        component: () => import('../views/content')
+        component: () => import('../views/content'),
+        meta: { requiresAuth: true }
+        
       },
     ]
   },

@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const sqlFn = require('./mysqlConnect')
+const jwt = require('jsonwebtoken')
+const jwtSecrect = require("./jwtScrict")
 router.post("/login", (req, res) => {
     //接受账号密码
     const username = req.body.username;
@@ -10,10 +12,14 @@ router.post("/login", (req, res) => {
     const arr = [username, password];
     sqlFn(sql, arr, result => {
         if (result.length  > 0) {
+            const token = jwt.sign({
+                 id:result[0].id,
+                 username:result[0].username
+            },jwtSecrect.serect)
             res.send({
                 status: 200,
-                mag:"登陆成功！",
-                result
+                token,
+                mag:"登陆成功!",
             })
         }else{
             res.send({

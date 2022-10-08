@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import api from '../../api'
+import {mapMutations} from "vuex"
 export default {
     data() {
         return {
@@ -34,6 +36,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations("loginModel",["updataUsername","updataToken"]),
         handleClick(tab, event) {
             console.log(tab, event);
         },
@@ -42,7 +45,20 @@ export default {
                 if (valid) {
                     //表单校验通过
                     //console.log(this.loginForm);
-                    alert('数据已提交!');
+                    api.login({
+                        username: this.loginForm.username,
+                        password: this.loginForm.password,
+                    }).then(res => {
+                        /* console.log(res.data); */
+                        if (res.data.status === 200) {
+                            //this.updataUsername(res.data.result[0].username)
+                            this.updataToken(res.data.token) //存入vuex
+                            localStorage.setItem("shop-token",res.data.token);
+                            this.$router.push("/")
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                    })
                 } else {
                     console.log('error submit!!');
                     return false;

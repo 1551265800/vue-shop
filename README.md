@@ -62,7 +62,26 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## 实现登陆页面 login.vue
 1. 用到的组件 el-card el-tabs el-form
 2. 功能 ： 登陆 注册
+3. 登陆
+    - 完成网络请求的处理
+    - 解决跨域问题
+        - 前端解决 proxy代理（开发环境）
+        - 后端解决 cors
 
 ## 实现后台服务器提供接口
 Node + MySql（XAMPP）
-1. 安装依赖 express框架
+1. xpress框架
+2. mysql库
+
+
+## 前后端同时运行服务器
+1. 依赖：`concurrently`     `cnpm i -g concurrently`
+2. node 服务器自动重启 `cnpm i -g nodemon`
+3. `"dev":"concurrently \"npm run serve\" \"nodemon server/index.js\""`
+
+## 路由权限管理
+1. 路由守卫
+2. 验证用户是否登陆
+    - Vuex管理用户登陆状态
+    - token 用来标识用户是否登陆成功 `cnpm i jsonwebtoken -S`
+    - 数据持久化 localStorage
