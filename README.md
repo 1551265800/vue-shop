@@ -91,8 +91,14 @@ Node + MySql（XAMPP）
     - 数据持久化 localStorage
 ## 导航
 1. 主导航
-    - Navmenu 导航菜单
+    - Navmenu 导航菜单 
     - Icon图标
 2. 顶部导航
     - Badge 标记
     - Dropdown 下拉菜单
+    - 用户名处理 解析token jwt-decode 并将token存入vuex和本地
+    - 退出处理 删除token和本地数据 并路由跳转到首页
+## 商品管理
+ - Table表格
+ - 分页
+ - 模糊搜索

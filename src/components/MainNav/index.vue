@@ -80,6 +80,7 @@ export default {
     top: 0;
     bottom: 0;
     text-align: left;
+    z-index: 1000;
 }
 
 .lang {

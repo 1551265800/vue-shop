@@ -9,6 +9,14 @@ const api = {
     //注册接口
     register(params){
         return axios.post(base.baseUrl + base.register, params)
+    },
+    //商品列表
+    selectTbItemAllByPage(params){
+        return axios.get(base.baseUrl + base.selectTbItemAllByPage, {params})
+    },
+    //商品条数
+    total(){
+        return axios.get(base.baseUrl + base.total)
     }
 }
 export default api;

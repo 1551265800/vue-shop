@@ -6,6 +6,7 @@ import store from './store'
 import './plugins/element.js'
 import "./assets/css/common.css"
 import "./router/permission"
+import "./utils/eventBus"
 
 Vue.config.productionTip = false
 

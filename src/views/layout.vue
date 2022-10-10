@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="container">
         <MainNav/>
-        <router-view></router-view>
+        <router-view class="main-content"></router-view>
          
     </div>
 </template>
@@ -14,5 +14,11 @@ import MainNav from '../components/MainNav';
 </script>
 
 <style lang="less" scoped>
-
+    .container{
+        .main-content{
+            margin-left: 210px;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+    }
 </style>
