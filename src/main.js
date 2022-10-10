@@ -12,6 +12,7 @@ Vue.config.productionTip = false
 //初始化
 if (localStorage.getItem("shop-token")) {
   store.commit("loginModel/updataToken",localStorage.getItem("shop-token"))
+  store.commit("loginModel/updataUsername",localStorage.getItem("shop-username"))
 }
 new Vue({
   router,

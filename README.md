@@ -67,6 +67,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - 解决跨域问题
         - 前端解决 proxy代理（开发环境）
         - 后端解决 cors
+4. 注册
+    - 注册时候验证
+    - 网络请求交互
+    - Element :message消息提示
 
 ## 实现后台服务器提供接口
 Node + MySql（XAMPP）
@@ -85,3 +89,10 @@ Node + MySql（XAMPP）
     - Vuex管理用户登陆状态
     - token 用来标识用户是否登陆成功 `cnpm i jsonwebtoken -S`
     - 数据持久化 localStorage
+## 导航
+1. 主导航
+    - Navmenu 导航菜单
+    - Icon图标
+2. 顶部导航
+    - Badge 标记
+    - Dropdown 下拉菜单
