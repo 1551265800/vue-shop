@@ -22,6 +22,7 @@
 
 <script>
 import api from '../../api/index'
+import { mapState } from "vuex"
 export default {
     data() {
         return {
@@ -34,6 +35,25 @@ export default {
         this.$bus.$on("onPage",val=>{
             this.http(val)
         })
+    },
+    computed: {
+        ...mapState("loginModel",["search"]),
+        searchChange(){
+            return this.search
+        }
+    },
+    watch: {
+        searchChange(newValue) {
+            api.search({
+                search:newValue
+            }).then(res=>{
+                if (res.data.status === 200) {
+                    this.tableData = res.data.result
+                }
+            }).catch(err=>{
+                console.log(err);
+            })
+        }
     },
     methods: {
         http(page) {

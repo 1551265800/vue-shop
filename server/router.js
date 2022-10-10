@@ -90,4 +90,22 @@ router.get("/total", (req, res) => {
         }
     })
 })
+//商品模糊搜索
+router.get("/search", (req, res) => {
+    const search = url.parse(req.url,true).query.search;
+    const sql = "select * from project where concat(`title`,`sellPoint`,`descs`) like '%" + search + "%'"
+    sqlFn(sql,null,result=>{
+        if (result.length > 0) {
+            res.send({
+                status: 200,
+                result
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "没有查到此数据"
+            })
+        }
+    })
+})
 module.exports = router;

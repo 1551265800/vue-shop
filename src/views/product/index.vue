@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Head/>
         <ProductList/>
         <Page/>
     </div>
@@ -8,8 +9,9 @@
 <script>
 import ProductList from './productList.vue';
 import Page from './Page.vue';
+import Head from './head.vue';
     export default {
-    components: { ProductList, Page }
+    components: { ProductList, Page, Head }
 }
 </script>
 

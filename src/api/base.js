@@ -3,7 +3,8 @@ const base = {
     login:"/api/login",  //登陆
     register:"/api/register",//注册
     selectTbItemAllByPage:"/api/backend/item/selectTbItemAllByPage",//商品列表
-    total:"/api/total"//商品数据数量
+    total:"/api/total",//商品数据数量
+    search:"/api/search",//模糊查找
 }
 
 export default base

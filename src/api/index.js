@@ -17,6 +17,10 @@ const api = {
     //商品条数
     total(){
         return axios.get(base.baseUrl + base.total)
+    },
+    //商品模糊查询
+    search(params){
+        return axios.get(base.baseUrl + base.search, {params})
     }
 }
 export default api;

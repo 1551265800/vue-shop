@@ -2,7 +2,8 @@ export default {
     namespaced: true,
     state: {
         username: "",
-        token:""
+        token:"",
+        search:"",
     },
     mutations: {
         updataUsername(state, username) {
@@ -17,5 +18,8 @@ export default {
         clearToken(state) {
             state.token = ""
         },
+        setSearch(state,search){
+            state.search = search
+        }
     }
 }
