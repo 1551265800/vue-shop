@@ -40,6 +40,7 @@
                 </el-dialog>
             </el-form-item>
             <el-form-item label="商品描述">
+                <UEditor/>
             </el-form-item>
 
         </el-form>
@@ -53,6 +54,7 @@
 <script>
 import ProductTree from "./productTree.vue";
 import Uplode from "./Uplode.vue";
+import UEditor from "./UEditor.vue";
 export default {
     data() {
         return {
@@ -76,7 +78,7 @@ export default {
             this.dialogAddVisible = res;
         });
     },
-    components: { ProductTree, Uplode }
+    components: { ProductTree, Uplode, UEditor }
 }
 </script>
 
