@@ -60,7 +60,7 @@ router.get("/backend/item/selectTbItemAllByPage", (req, res) => {
     //接口参数：page
     var page = url.parse(req.url, true).query.page || 1
     const sql = "select * from project order by id desc limit 10 offset " + (page - 1) * 10
-    sqlFn(sql,null,result=>{
+    sqlFn(sql, null, result => {
         if (result.length > 0) {
             res.send({
                 status: 200,
@@ -78,7 +78,7 @@ router.get("/backend/item/selectTbItemAllByPage", (req, res) => {
 router.get("/total", (req, res) => {
     //接口参数：page
     const sql = "select count(*) from project where id"
-    sqlFn(sql,null,result=>{
+    sqlFn(sql, null, result => {
         if (result.length > 0) {
             res.send({
                 status: 200,
@@ -94,9 +94,9 @@ router.get("/total", (req, res) => {
 })
 //商品模糊搜索
 router.get("/search", (req, res) => {
-    const search = url.parse(req.url,true).query.search;
+    const search = url.parse(req.url, true).query.search;
     const sql = "select * from project where concat(`title`,`sellPoint`,`descs`) like '%" + search + "%'"
-    sqlFn(sql,null,result=>{
+    sqlFn(sql, null, result => {
         if (result.length > 0) {
             res.send({
                 status: 200,
@@ -112,10 +112,10 @@ router.get("/search", (req, res) => {
 })
 //类目选择
 router.get("/backend/itemCategory/select", (req, res) => {
-    const id = url.parse(req.url,true).query.id || 1;
+    const id = url.parse(req.url, true).query.id || 1;
     const sql = "select * from category where id=? ";
     const arr = [id]
-    sqlFn(sql,arr,result=>{
+    sqlFn(sql, arr, result => {
         if (result.length > 0) {
             res.send({
                 status: 200,
@@ -138,7 +138,7 @@ var storage = multer.diskStorage({
         cb(null, Date.now() + "-" + file.originalname)
     }
 })
- 
+
 var createFolder = function (folder) {
     try {
         fs.accessSync(folder);
@@ -146,11 +146,11 @@ var createFolder = function (folder) {
         fs.mkdirSync(folder);
     }
 }
- 
+
 var uploadFolder = './upload/';
 createFolder(uploadFolder);
 var upload = multer({ storage: storage });
- 
+
 router.post('/upload', upload.single('file'), function (req, res, next) {
     var file = req.file;
     console.log('文件类型：%s', file.mimetype);
@@ -159,4 +159,30 @@ router.post('/upload', upload.single('file'), function (req, res, next) {
     console.log('文件保存路径：%s', file.path);
     res.json({ res_code: '0', name: file.originalname, url: file.path });
 });
+
+//商品添加
+router.get("/backend/item/insertTbItem", (req, res) => {
+    var title = url.parse(req.url, true).query.title || "";
+    var cid = url.parse(req.url, true).query.cid || "";
+    var sellPoint = url.parse(req.url, true).query.sellPoint || "";
+    var price = url.parse(req.url, true).query.price || "";
+    var num = url.parse(req.url, true).query.num || "";
+    var desc = url.parse(req.url, true).query.desc || "";
+    var image = url.parse(req.url, true).query.image || "";
+    const sql = "insert into project values (null,?,?,?,?,?,?,'',1,'','',?)";
+    var arr = [title, image, sellPoint, price, cid, num, desc];
+    sqlFn(sql, arr, result => {
+        if (result.affectedRows > 0) {
+            res.send({
+                status: 200,
+                msg: "添加成功"
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "添加失败"
+            })
+        }
+    })
+})
 module.exports = router;

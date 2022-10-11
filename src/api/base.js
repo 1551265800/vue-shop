@@ -6,6 +6,7 @@ const base = {
     total:"/api/total",//商品数据数量
     search:"/api/search",//模糊查找
     categorySelection:"/api/backend/itemCategory/select",//类目选择
+    insertTbItem:"/api/backend/item/insertTbItem",//商品添加
 }
 
 export default base

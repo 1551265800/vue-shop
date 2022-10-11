@@ -1,5 +1,5 @@
 <template>
-    <el-tree :props="props" :load="loadNode" lazy></el-tree>
+    <el-tree :props="props" :load="loadNode" lazy @node-click="handelNodeTree"></el-tree>
 </template>
 
 <script>
@@ -39,6 +39,9 @@ export default {
                 })
             }
 
+        },
+        handelNodeTree(data){
+            this.$emit("onTree",data);
         }
     }
 };

@@ -22,7 +22,12 @@ export default {
                 initialFrameWidth:"100%"
             }
         }
-    }
+    },
+    watch: {
+        msg(newValue) {
+            this.$emit("onEditor",newValue)
+        }
+    },
 }
 </script>
 

@@ -103,8 +103,17 @@ Node + MySql（XAMPP）
  - 分页
  - 模糊搜索
  - 添加
-    - 富文本编辑器 `cnpm i vue-ueditor-wrap@2.x -S`
-    - `https://github.com/HaoChuan9421/vue-ueditor-wrap/tree/2.x`
+    - elementUI
+        - Dialog（内嵌）
+        - Tree 树形控件
+        - Upload 上传
+    - 富文本编辑器 
+        - `cnpm i vue-ueditor-wrap@2.x -S`
+        - `https://github.com/HaoChuan9421/vue-ueditor-wrap/tree/2.x`
+        - wangeditor `https://www.wangeditor.com/`
+    - 传递数据
+        - 子传父 $emit
+        - 同级传递数据 eventbus
     
 ## 国际化处理
  - vue-i18n  `cnpm install vue-i18n@6`

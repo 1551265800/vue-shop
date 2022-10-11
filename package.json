@@ -8,6 +8,7 @@
     "dev": "concurrently \"npm run serve\" \"nodemon server/index.js\""
   },
   "dependencies": {
+    "@wangeditor/editor-for-vue": "^1.0.2",
     "axios": "^1.1.2",
     "core-js": "^3.8.3",
     "cors": "^2.8.5",

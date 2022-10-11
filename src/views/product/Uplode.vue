@@ -9,9 +9,14 @@
 
 <script>
 export default {
+    data() {
+        return {
+            fileList:[]
+        }
+    },
     methods: {
         handleSuccess(res, file) {
-            console.log(res);
+            this.$emit("onUpLode",res)
         },
         submitUpload(){
             this.$refs.upload.submit();

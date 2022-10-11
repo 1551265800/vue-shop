@@ -35,6 +35,10 @@ export default {
         this.$bus.$on("onPage",val=>{
             this.http(val)
         })
+        //页面刷新
+        this.$bus.$on("onRefresh",flag =>{
+            this.http()
+        })
     },
     computed: {
         ...mapState("loginModel",["search"]),

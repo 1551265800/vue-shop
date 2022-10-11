@@ -25,6 +25,11 @@ const api = {
     //类目选择CategorySelection
     categorySelection(params){
         return axios.get(base.baseUrl + base.categorySelection, {params})
+    },
+    //商品添加
+    insertTbItem(params){
+        return axios.get(base.baseUrl + base.insertTbItem, {params})
     }
+
 }
 export default api;
