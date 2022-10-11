@@ -102,3 +102,8 @@ Node + MySql（XAMPP）
  - Table表格
  - 分页
  - 模糊搜索
+ - 添加
+    - 富文本编辑器 `cnpm i vue-ueditor-wrap@2.x -S`
+## 国际化处理
+ - vue-i18n  `cnpm install vue-i18n@6`
+ - elementUI 语言环境切换 
