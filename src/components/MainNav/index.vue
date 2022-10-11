@@ -1,7 +1,20 @@
 <template>
     <div>
+
         <div class="header">
+
             <div class="login">
+                <el-dropdown class="lang" @command="handerCommand">
+                    <span class="el-dropdown-link">
+                        切换语言<i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item command="zh">中文</el-dropdown-item>
+                        <el-dropdown-item command="en">English</el-dropdown-item>
+                        <el-dropdown-item command="ja">日本語</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+
                 <el-badge :value="12" class="item">
                     <i class="el-icon-message-solid"></i>
                 </el-badge>
@@ -25,15 +38,15 @@
             background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router>
             <el-menu-item index="/product">
                 <i class="el-icon-menu"></i>
-                <span slot="title">商品管理</span>
+                <span slot="title">{{ $t("message.project") }}</span>
             </el-menu-item>
             <el-menu-item index="/params">
                 <i class="el-icon-document"></i>
-                <span slot="title">规格参数</span>
+                <span slot="title">{{ $t("message.parmas") }}</span>
             </el-menu-item>
             <el-menu-item index="/content">
                 <i class="el-icon-setting"></i>
-                <span slot="title">广告分类</span>
+                <span slot="title">{{ $t("message.content") }}</span>
             </el-menu-item>
         </el-menu>
     </div>
@@ -66,6 +79,10 @@ export default {
             store.commit("loginModel/clearUsername");
             localStorage.removeItem("shop-username");
             this.$router.push("/login")
+        },
+        //切换语言事件
+        handerCommand(command) {
+            this.$i18n.locale = command;
         }
     }
 
@@ -122,5 +139,9 @@ export default {
 .header .login .item i {
     display: block;
     font-size: 25px;
+}
+
+.lang {
+    margin-right: 20px;
 }
 </style>

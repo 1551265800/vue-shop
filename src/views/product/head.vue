@@ -6,8 +6,8 @@
                 <el-input type="text" v-model="search.content"  @keyup.enter.native="onSubmitSearch"></el-input>
             </el-form-item>
             <el-form-item class="btn-container">
-                <el-button type="primary" @click="onSubmitSearch">查询</el-button>
-                <el-button type="primary" @click="submitForm('ruleForm')">添加</el-button>
+                <el-button type="primary" @click="onSubmitSearch">{{ $t("message.search") }}</el-button>
+                <el-button type="primary" @click="addProductHander">{{ $t("message.add") }}</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -20,6 +20,9 @@ export default {
         ...mapMutations("loginModel",["setSearch"]),
         onSubmitSearch() {
             this.setSearch(this.search.content)
+        },
+        addProductHander(){
+            this.$bus.$emit("onAdd",true)
         }
     },
     data() {

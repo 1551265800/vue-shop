@@ -21,6 +21,10 @@ const api = {
     //商品模糊查询
     search(params){
         return axios.get(base.baseUrl + base.search, {params})
+    },
+    //类目选择CategorySelection
+    categorySelection(params){
+        return axios.get(base.baseUrl + base.categorySelection, {params})
     }
 }
 export default api;

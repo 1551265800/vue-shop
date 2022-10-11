@@ -5,6 +5,7 @@ const base = {
     selectTbItemAllByPage:"/api/backend/item/selectTbItemAllByPage",//商品列表
     total:"/api/total",//商品数据数量
     search:"/api/search",//模糊查找
+    categorySelection:"/api/backend/itemCategory/select",//类目选择
 }
 
 export default base
