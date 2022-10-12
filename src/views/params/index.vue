@@ -1,15 +1,19 @@
 <template>
     <div>
-        <h3>规格参数</h3>
+        <ParamsList/>
     </div>
-</template>
-
-<script>
-    export default {
-        
-    }
-</script>
-
-<style lang="less" scoped>
-
-</style>
+  </template>
+   
+  <script>
+import ParamsList from './paramsList.vue';
+  export default {
+    components:{
+    ParamsList
+}
+  }
+  </script>
+   
+  <style>
+   
+  </style>
+  

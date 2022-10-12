@@ -114,7 +114,10 @@ Node + MySql（XAMPP）
     - 传递数据
         - 子传父 $emit
         - 同级传递数据 eventbus
-    
+ - 删除
+    - MessageBox弹框
+    - Message提示消息
+ - 修改
 ## 国际化处理
  - vue-i18n  `cnpm install vue-i18n@6`
  - elementUI 语言环境切换 

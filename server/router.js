@@ -184,5 +184,185 @@ router.get("/backend/item/insertTbItem", (req, res) => {
             })
         }
     })
+});
+//商品删除
+router.get("/backend/item/deleteItemById", (req, res) => {
+    var id = url.parse(req.url, true).query.id;
+    var sql = "delete from project where id=?";
+    var arr = [id]
+    sqlFn(sql, arr, result => {
+        if (result.affectedRows > 0) {
+            res.send({
+                status: 200,
+                msg: "删除成功"
+            })
+        } else {
+            res.send({
+                status: 500,
+                msg: '删除失败'
+            })
+        }
+    })
+})
+//规格参数
+router.get("/backend/itemParam/selectItemParamAll", (req, res) => {
+    const page = url.parse(req.url, true).query.page || 1;
+    const sql = "select * from params order by id desc limit 10 offset " + (page - 1) * 10;
+    sqlFn(sql, null, result => {
+        if (result.length > 0) {
+            res.send({
+                status: 200,
+                result
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "暂无数据"
+            })
+        }
+    })
+})
+
+//规格参数模糊搜索
+
+router.get("/params/search", (req, res) => {
+    const search = url.parse(req.url, true).query.search;
+    const sql = "select * from params where concat(`id`,`itemCatId`,`paramData`) like '%" + search + "%'";
+    sqlFn(sql, null, result => {
+        if (result.length > 0) {
+            res.send({
+                status: 200,
+                result
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: '暂无数据'
+            })
+        }
+    })
+})
+
+
+/**
+ * 规格参数添加
+ */
+router.get("/backend/itemParam/insertItemParam", (req, res) => {
+    var itemCatId = url.parse(req.url, true).query.itemCatId;
+    var paramData = url.parse(req.url, true).query.paramData;
+    var sql = "insert into params values (null,?,?)";
+    sqlFn(sql, [itemCatId, paramData], result => {
+        if (result.affectedRows > 0) {
+            res.send({
+                status: 200,
+                msg: "添加成功"
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "添加失败"
+            })
+        }
+    })
+})
+
+/**
+ * 规格参数删除
+ */
+router.get("/params/delete", (req, res) => {
+    var id = url.parse(req.url, true).query.id;
+    const sql = "delete from params where id=?"
+    sqlFn(sql, [id], result => {
+        if (result.affectedRows > 0) {
+            res.send({
+                status: 200,
+                msg: "删除成功"
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "删除失败"
+            })
+        }
+    })
+})
+/**
+ * 内容分类-标题
+ */
+router.get("/content/title", (req, res) => {
+    const sql = "select * from content";
+    sqlFn(sql, null, result => {
+        if (result.length > 0) {
+            res.send({
+                status: 200,
+                result
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "暂无数据"
+            })
+        }
+    })
+})
+
+router.get("/content/delete", (req, res) => {
+    var pid = url.parse(req.url, true).query.pid;
+    const sql = "delete from content where pid=?";
+    sqlFn(sql, [pid], result => {
+        if (result.affectedRows > 0) {
+            res.send({
+                status: 200,
+                msg: "删除成功"
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "删除失败"
+            })
+        }
+    })
+})
+
+router.get("/content/add", (req, res) => {
+    var name = url.parse(req.url, true).query.name;
+    var id = Math.floor(Math.random() * 100000);
+    var pid = Math.floor(Math.random() * 100000);
+    const sql = "insert into content values (?,?,?)";
+    sqlFn(sql, [id, name, pid], result => {
+        if (result.affectedRows > 0) {
+            res.send({
+                status: 200,
+                msg: "添加成功"
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "添加失败"
+            })
+        }
+    })
+})
+
+
+/**
+ * 内容分类-元素列表
+ */
+router.get("/content/list", (req, res) => {
+    var pid = url.parse(req.url, true).query.pid;
+    var sql = "select * from contentinfo where pid=?"
+    sqlFn(sql, [pid], result => {
+        if (result.length > 0) {
+            res.send({
+                status: 200,
+                result
+            })
+        } else {
+            res.send({
+                status: 400,
+                msg: "暂无数据"
+            })
+        }
+    })
 })
 module.exports = router;
